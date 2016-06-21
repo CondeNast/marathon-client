@@ -3,13 +3,13 @@ package mesosphere.marathon.client.model.v2;
 import mesosphere.marathon.client.utils.ModelUtils;
 
 public class GetAppResponse {
-	private App app;
+	private AppWithVersion app;
 
-	public App getApp() {
+	public AppWithVersion getApp() {
 		return app;
 	}
 
-	public void setApp(App app) {
+	public void setApp(AppWithVersion app) {
 		this.app = app;
 	}
 
