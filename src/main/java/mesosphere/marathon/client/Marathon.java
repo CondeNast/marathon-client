@@ -137,5 +137,4 @@ public interface Marathon {
 	GetServerInfoResponse getServerInfo() throws MarathonException;
 
 	// Miscellaneous
-
 }
