@@ -51,11 +51,11 @@ public interface Marathon {
 
 	@RequestLine("DELETE /v2/apps/{app_id}/tasks?host={host}&scale={scale}")
 	DeleteAppTasksResponse deleteAppTasks(@Param("app_id") String appId,
-			@Param("host") String host, @Param("scale") String scale) throws MarathonException;
+										  @Param("host") String host, @Param("scale") String scale) throws MarathonException;
 
 	@RequestLine("DELETE /v2/apps/{app_id}/tasks/{task_id}?scale={scale}")
 	DeleteAppTaskResponse deleteAppTask(@Param("app_id") String appId,
-			@Param("task_id") String taskId, @Param("scale") String scale) throws MarathonException;
+										@Param("task_id") String taskId, @Param("scale") String scale) throws MarathonException;
 
 	// Groups
 	@RequestLine("POST /v2/groups")
