@@ -2,8 +2,6 @@ package mesosphere.marathon.client;
 
 import java.util.List;
 
-import feign.Param;
-import feign.RequestLine;
 import mesosphere.marathon.client.model.v2.App;
 import mesosphere.marathon.client.model.v2.AppWithVersion;
 import mesosphere.marathon.client.model.v2.DeleteAppTaskResponse;
@@ -20,6 +18,9 @@ import mesosphere.marathon.client.model.v2.Group;
 import mesosphere.marathon.client.model.v2.QueueResponse;
 import mesosphere.marathon.client.model.v2.Result;
 import mesosphere.marathon.client.utils.MarathonException;
+
+import feign.Param;
+import feign.RequestLine;
 
 public interface Marathon {
 	// Apps
