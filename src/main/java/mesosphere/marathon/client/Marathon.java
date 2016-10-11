@@ -74,7 +74,7 @@ public interface Marathon {
 	List<Deployment> getDeployments() throws MarathonException;
 
 	@RequestLine("DELETE /v2/deployments/{deploymentId}")
-	void cancelDeploymentAndRollback(@Param("deploymentId") String id) throws MarathonException;
+	Result cancelDeploymentAndRollback(@Param("deploymentId") String id) throws MarathonException;
 
 	@RequestLine("DELETE /v2/deployments/{deploymentId}?force=true")
 	void cancelDeployment(@Param("deploymentId") String id) throws MarathonException;
