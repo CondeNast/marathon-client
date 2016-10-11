@@ -8,6 +8,10 @@ public class Port {
 	private Integer servicePort;
 	private String protocol;
 
+	protected Port() {
+
+	}
+
 	public Port(Integer containerPort) {
 		this.containerPort = containerPort;
 	}
