@@ -13,7 +13,7 @@ public class Task {
     private String startedAt;
     private Collection<HealthCheckResult> healthCheckResults;
     private String version;
-    private String status;
+    private String state;
 
     public String getHost() {
         return host;
@@ -79,12 +79,12 @@ public class Task {
         this.version = version;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String state) {
+        this.state = state;
     }
 
     @Override
