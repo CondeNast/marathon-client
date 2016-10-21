@@ -13,7 +13,7 @@ public class Task {
     private String startedAt;
     private Collection<HealthCheckResult> healthCheckResults;
     private String version;
-    private TaskStatus status;
+    private String status;
 
     public String getHost() {
         return host;
@@ -79,11 +79,11 @@ public class Task {
         this.version = version;
     }
 
-    public TaskStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(TaskStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
