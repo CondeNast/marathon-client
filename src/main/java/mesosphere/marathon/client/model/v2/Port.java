@@ -15,7 +15,7 @@ public class Port {
 	public Port(Integer containerPort) {
 		this.containerPort = containerPort;
 	}
-	
+
 	public Integer getContainerPort() {
 		return containerPort;
 	}
