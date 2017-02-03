@@ -14,6 +14,10 @@ public class Port {
 
 	private Map<String, String> labels = new HashMap<>();
 
+	public Port(Integer containerPort) {
+		this.containerPort = containerPort;
+	}
+
 	public Integer getContainerPort() {
 		return containerPort;
 	}
