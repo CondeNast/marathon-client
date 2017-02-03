@@ -62,6 +62,12 @@
 		<url>https://github.com/mesosphere/marathon-client/issues</url>
 	</issueManagement>
 
+	<developers>
+		<developer>
+			<name>Mohit Soni</name>
+		</developer>
+	</developers>
+
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
