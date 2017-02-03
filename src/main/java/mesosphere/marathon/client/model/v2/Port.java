@@ -1,6 +1,5 @@
 package mesosphere.marathon.client.model.v2;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import mesosphere.client.common.ModelUtils;
