@@ -1,20 +1,15 @@
 package mesosphere.marathon.client.model.v2;
 
-import mesosphere.marathon.client.utils.ModelUtils;
+import java.util.Map;
+
+import mesosphere.client.common.ModelUtils;
 
 public class Port {
 	private Integer containerPort;
 	private Integer hostPort;
 	private Integer servicePort;
 	private String protocol;
-
-	protected Port() {
-
-	}
-
-	public Port(Integer containerPort) {
-		this.containerPort = containerPort;
-	}
+	private Map<String, String> labels = new HashMap<>();
 
 	public Integer getContainerPort() {
 		return containerPort;
@@ -51,5 +46,13 @@ public class Port {
 	@Override
 	public String toString() {
 		return ModelUtils.toString(this);
+	}
+
+	public Map<String, String> getLabels() {
+		return labels;
+	}
+
+	public void setLabels(Map<String, String> labels) {
+		this.labels = labels;
 	}
 }

@@ -2,26 +2,21 @@ package mesosphere.marathon.client.model.v2;
 
 import java.util.Collection;
 
-import mesosphere.marathon.client.utils.ModelUtils;
+import mesosphere.client.common.ModelUtils;
 
 public class Task {
-	private String host;
 	private String id;
-	private String appId;
-	private Collection<Integer> ports;
-	private String stagedAt;
-	private String startedAt;
-	private Collection<HealthCheckResult> healthCheckResults;
-	private String version;
+	private String slaveId;
+	private String host;
 	private String state;
-
-	public String getHost() {
-		return host;
-	}
-
-	public void setHost(String host) {
-		this.host = host;
-	}
+	private String startedAt;
+	private String stagedAt;
+	private Collection<Integer> ports;
+	private String version;
+	private Collection<IpAddress> ipAddresses;
+	private String appId;
+	private Collection<Integer> servicePorts;
+	private Collection<HealthCheckResults> healthCheckResults;
 
 	public String getId() {
 		return id;
@@ -31,28 +26,28 @@ public class Task {
 		this.id = id;
 	}
 
-	public String getAppId() {
-		return appId;
+	public String getSlaveId() {
+		return slaveId;
 	}
 
-	public void setAppId(String appId) {
-		this.appId = appId;
+	public void setSlaveId(String slaveId) {
+		this.slaveId = slaveId;
 	}
 
-	public Collection<Integer> getPorts() {
-		return ports;
+	public String getHost() {
+		return host;
 	}
 
-	public void setPorts(Collection<Integer> ports) {
-		this.ports = ports;
+	public void setHost(String host) {
+		this.host = host;
 	}
 
-	public String getStagedAt() {
-		return stagedAt;
+	public String getState() {
+		return state;
 	}
 
-	public void setStagedAt(String stagedAt) {
-		this.stagedAt = stagedAt;
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public String getStartedAt() {
@@ -63,12 +58,20 @@ public class Task {
 		this.startedAt = startedAt;
 	}
 
-	public Collection<HealthCheckResult> getHealthCheckResults() {
-		return healthCheckResults;
+	public String getStagedAt() {
+		return stagedAt;
 	}
 
-	public void setHealthCheckResults(Collection<HealthCheckResult> healthCheckResults) {
-		this.healthCheckResults = healthCheckResults;
+	public void setStagedAt(String stagedAt) {
+		this.stagedAt = stagedAt;
+	}
+
+	public Collection<Integer> getPorts() {
+		return ports;
+	}
+
+	public void setPorts(Collection<Integer> ports) {
+		this.ports = ports;
 	}
 
 	public String getVersion() {
@@ -79,12 +82,36 @@ public class Task {
 		this.version = version;
 	}
 
-	public String getState() {
-		return state;
+	public Collection<IpAddress> getIpAddresses() {
+		return ipAddresses;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setIpAddresses(Collection<IpAddress> ipAddresses) {
+		this.ipAddresses = ipAddresses;
+	}
+
+	public String getAppId() {
+		return appId;
+	}
+
+	public void setAppId(String appId) {
+		this.appId = appId;
+	}
+
+	public Collection<Integer> getServicePorts() {
+		return servicePorts;
+	}
+
+	public void setServicePorts(Collection<Integer> servicePorts) {
+		this.servicePorts = servicePorts;
+	}
+
+	public Collection<HealthCheckResults> getHealthCheckResults() {
+		return healthCheckResults;
+	}
+
+	public void setHealthCheckResults(Collection<HealthCheckResults> healthCheckResults) {
+		this.healthCheckResults = healthCheckResults;
 	}
 
 	@Override
