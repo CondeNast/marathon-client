@@ -66,7 +66,7 @@ public interface Marathon {
 
 	@RequestLine("POST /v2/apps/{id}/restart?force={force}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
-	void restartApp(@Param("id") String id, @Param("force") boolean force) throws MarathonException;
+	Result restartApp(@Param("id") String id, @Param("force") boolean force) throws MarathonException;
 
 	@RequestLine("DELETE /v2/apps/{id}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
@@ -106,7 +106,7 @@ public interface Marathon {
 
 	@RequestLine("DELETE /v2/deployments/{deploymentId}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
-	void cancelDeploymentAndRollback(@Param("deploymentId") String id) throws MarathonException;
+	Result cancelDeploymentAndRollback(@Param("deploymentId") String id) throws MarathonException;
 
 	@RequestLine("DELETE /v2/deployments/{deploymentId}?force=true")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
