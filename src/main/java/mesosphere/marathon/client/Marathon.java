@@ -10,6 +10,7 @@ import mesosphere.marathon.client.model.v2.DeleteAppTasksResponse;
 import mesosphere.marathon.client.model.v2.Deployment;
 import mesosphere.marathon.client.model.v2.GetAppResponse;
 import mesosphere.marathon.client.model.v2.GetAppTasksResponse;
+import mesosphere.marathon.client.model.v2.GetAppVersionsResponse;
 import mesosphere.marathon.client.model.v2.GetAppsResponse;
 import mesosphere.marathon.client.model.v2.GetEventSubscriptionRegisterResponse;
 import mesosphere.marathon.client.model.v2.GetEventSubscriptionsResponse;
@@ -21,8 +22,8 @@ import mesosphere.marathon.client.model.v2.Result;
 
 import feign.Headers;
 import feign.Param;
-import feign.RequestLine;
 import feign.QueryMap;
+import feign.RequestLine;
 
 public interface Marathon {
 	// Apps
@@ -32,7 +33,7 @@ public interface Marathon {
 
 	@RequestLine("GET /v2/apps")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
-	GetAppsResponse getApps(@QueryMap Map<String,String> queryMap) throws MarathonException;
+	GetAppsResponse getApps(@QueryMap Map<String, String> queryMap) throws MarathonException;
 
 	@RequestLine("GET /v2/apps/{id}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
@@ -41,6 +42,14 @@ public interface Marathon {
 	@RequestLine("GET /v2/apps/{id}/tasks")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	GetAppTasksResponse getAppTasks(@Param("id") String id) throws MarathonException;
+
+	@RequestLine("GET /v2/apps/{id}/versions")
+	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
+	GetAppVersionsResponse getAppVersions(@Param("id") String id) throws MarathonException;
+
+	@RequestLine("GET /v2/apps/{id}/versions/{version}")
+	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
+	App getAppVersion(@Param("id") String id, @Param("version") String version) throws MarathonException;
 
 	@RequestLine("GET /v2/tasks")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
@@ -53,11 +62,11 @@ public interface Marathon {
 	@RequestLine("PUT /v2/apps/{app_id}?force={force}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	Result updateApp(@Param("app_id") String appId, App app,
-            @Param("force") boolean force) throws MarathonException;
+			@Param("force") boolean force) throws MarathonException;
 
 	@RequestLine("POST /v2/apps/{id}/restart?force={force}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
-	void restartApp(@Param("id") String id,@Param("force") boolean force) throws MarathonException;
+	void restartApp(@Param("id") String id, @Param("force") boolean force) throws MarathonException;
 
 	@RequestLine("DELETE /v2/apps/{id}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
@@ -77,11 +86,11 @@ public interface Marathon {
 	@RequestLine("POST /v2/groups")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	Result createGroup(Group group) throws MarathonException;
-	
+
 	@RequestLine("DELETE /v2/groups/{id}?force={force}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	Result deleteGroup(@Param("id") String id, @Param("force") boolean force) throws MarathonException;
-	
+
 	@RequestLine("GET /v2/groups/{id}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	Group getGroup(@Param("id") String id) throws MarathonException;
@@ -94,16 +103,16 @@ public interface Marathon {
 	@RequestLine("GET /v2/deployments")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	List<Deployment> getDeployments() throws MarathonException;
-	
+
 	@RequestLine("DELETE /v2/deployments/{deploymentId}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	void cancelDeploymentAndRollback(@Param("deploymentId") String id) throws MarathonException;
-	
+
 	@RequestLine("DELETE /v2/deployments/{deploymentId}?force=true")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	void cancelDeployment(@Param("deploymentId") String id) throws MarathonException;
 
-    // Event Subscriptions
+	// Event Subscriptions
 	@RequestLine("POST /v2/eventSubscriptions?callbackUrl={url}")
 	@Headers(HeaderUtils.MARATHON_API_SOURCE_HEADER)
 	public GetEventSubscriptionRegisterResponse register(@Param("url") String url) throws MarathonException;
