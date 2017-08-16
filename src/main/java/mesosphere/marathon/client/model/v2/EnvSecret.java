@@ -27,7 +27,7 @@ public class EnvSecret extends EnvValue {
 	}
 
 	@Override
-	public EnvSecret getAsSecret() {
+	public EnvSecret asEnvSecret() {
 		return this;
 	}
 
@@ -37,7 +37,7 @@ public class EnvSecret extends EnvValue {
 	}
 
 	@Override
-	public EnvString getAsString() {
+	public EnvString asEnvString() {
 		throw new IllegalStateException(this.getClass().getSimpleName() + " is not a " + EnvString.class.getSimpleName());
 	}
 

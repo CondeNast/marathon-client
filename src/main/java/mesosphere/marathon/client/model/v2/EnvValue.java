@@ -17,11 +17,11 @@ public abstract class EnvValue {
 
 	public abstract boolean isSecret();
 
-	public abstract EnvSecret getAsSecret();
+	public abstract EnvSecret asEnvSecret();
 
 	public abstract boolean isString();
 
-	public abstract EnvString getAsString();
+	public abstract EnvString asEnvString();
 
 	public static class EnvValueAdapter implements JsonDeserializer<EnvValue>, JsonSerializer<EnvValue> {
 
