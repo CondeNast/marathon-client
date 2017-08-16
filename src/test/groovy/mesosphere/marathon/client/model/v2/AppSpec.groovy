@@ -141,7 +141,21 @@ class AppSpec extends Specification {
 
   }
 
-  def exampleJSON() {
+  def "example JSON is same when deserialized and re-serialized"() {
+    given:
+    def json = exampleJSON()
+
+    def app = ModelUtils.GSON.fromJson(json, App.class)
+    def reserializedApp = ModelUtils.GSON.toJson(app);
+    def deserializedApp = ModelUtils.GSON.fromJson(reserializedApp, App.class);
+    def reserializedAppAgain = ModelUtils.GSON.toJson(deserializedApp);
+
+    expect:
+    reserializedApp == reserializedAppAgain
+  }
+
+
+    def exampleJSON() {
     return """
 {
   "id": "/foo",
