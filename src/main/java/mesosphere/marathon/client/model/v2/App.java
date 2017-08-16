@@ -1,6 +1,11 @@
 package mesosphere.marathon.client.model.v2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 import mesosphere.client.common.ModelUtils;
 
@@ -39,7 +44,7 @@ public class App {
 	private List<List<String>> constraints;
 	private Collection<String> acceptedResourceRoles;
 	private Container container;
-	private Map<String, Object> env;
+	private Map<String, EnvValue> env;
 	private Map<String, String> labels;
 	private IpAddress ipAddress;
 	private String version;
@@ -47,8 +52,8 @@ public class App {
 	private Integer taskKillGracePeriodSeconds;
 	private Map<String, SecretSource> secrets;
 	private String executor;
-    private List<Fetchable> fetch;
-    private List<String> storeUrls;
+	private List<Fetchable> fetch;
+	private List<String> storeUrls;
 	private List<Integer> ports;
 	private List<PortDefinition> portDefinitions;
 	private Boolean requirePorts;
@@ -57,7 +62,7 @@ public class App {
 	private Double backoffFactor;
 	private Integer maxLaunchDelaySeconds;
 	private Collection<Task> tasks;
-    private AppVersionInfo versionInfo;
+	private AppVersionInfo versionInfo;
 	private Integer tasksStaged;
 	private Integer tasksRunning;
 	private Integer tasksHealthy;
@@ -192,11 +197,11 @@ public class App {
 		this.container = container;
 	}
 
-	public Map<String, Object> getEnv() {
+	public Map<String, EnvValue> getEnv() {
 		return env;
 	}
 
-	public void setEnv(Map<String, Object> env) {
+	public void setEnv(Map<String, EnvValue> env) {
 		this.env = env;
 	}
 
@@ -265,13 +270,13 @@ public class App {
 		this.executor = executor;
 	}
 
-    public List<Fetchable> getFetch() {
-        return fetch;
-    }
+	public List<Fetchable> getFetch() {
+		return fetch;
+	}
 
-    public void setFetch(final List<Fetchable> fetch) {
-        this.fetch = fetch;
-    }
+	public void setFetch(final List<Fetchable> fetch) {
+		this.fetch = fetch;
+	}
 
 	public List<String> getStoreUrls() {
 		return storeUrls;
@@ -368,13 +373,13 @@ public class App {
 		this.tasks = tasks;
 	}
 
-    public AppVersionInfo getVersionInfo() {
-        return versionInfo;
-    }
+	public AppVersionInfo getVersionInfo() {
+		return versionInfo;
+	}
 
-    public void setVersionInfo(final AppVersionInfo versionInfo) {
-        this.versionInfo = versionInfo;
-    }
+	public void setVersionInfo(final AppVersionInfo versionInfo) {
+		this.versionInfo = versionInfo;
+	}
 
 	public Integer getTasksStaged() {
 		return tasksStaged;
