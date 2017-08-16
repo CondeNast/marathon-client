@@ -103,7 +103,8 @@ class AppSpec extends Specification {
 
     expect:
     // env
-    app.getEnv().get("PASSWORD") == ["secret": "/db/password"]
+    app.getEnv().get("XPS1") == new EnvString("Test")
+    app.getEnv().get("PASSWORD") == new EnvSecret("/db/password")
 
     // port definitions
     portDefs.size() == 2
@@ -140,7 +141,21 @@ class AppSpec extends Specification {
 
   }
 
-  def exampleJSON() {
+  def "example JSON is same when deserialized and re-serialized"() {
+    given:
+    def json = exampleJSON()
+
+    def app = ModelUtils.GSON.fromJson(json, App.class)
+    def reserializedApp = ModelUtils.GSON.toJson(app);
+    def deserializedApp = ModelUtils.GSON.fromJson(reserializedApp, App.class);
+    def reserializedAppAgain = ModelUtils.GSON.toJson(deserializedApp);
+
+    expect:
+    reserializedApp == reserializedAppAgain
+  }
+
+
+    def exampleJSON() {
     return """
 {
   "id": "/foo",

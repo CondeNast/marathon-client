@@ -44,7 +44,7 @@ public class App {
 	private List<List<String>> constraints;
 	private Collection<String> acceptedResourceRoles;
 	private Container container;
-	private Map<String, String> env;
+	private Map<String, EnvValue> env;
 	private Map<String, String> labels;
 	private IpAddress ipAddress;
 	private String version;
@@ -197,11 +197,11 @@ public class App {
 		this.container = container;
 	}
 
-	public Map<String, String> getEnv() {
+	public Map<String, EnvValue> getEnv() {
 		return env;
 	}
 
-	public void setEnv(Map<String, String> env) {
+	public void setEnv(Map<String, EnvValue> env) {
 		this.env = env;
 	}
 
