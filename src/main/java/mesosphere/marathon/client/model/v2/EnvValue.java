@@ -29,7 +29,11 @@ public abstract class EnvValue {
 		public EnvValue deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
 			if (jsonElement.isJsonObject() && jsonElement.getAsJsonObject().has("secret"))
 				return jsonDeserializationContext.deserialize(jsonElement, EnvSecret.class);
-			else return new EnvString(jsonElement.getAsString());
+			else if (jsonElement.isJsonPrimitive()) {
+				return new EnvString(jsonElement.getAsString());
+			} else {
+				throw new IllegalStateException("Cannot deserialize " + jsonElement.toString() + " as EnvValue");
+			}
 		}
 
 		@Override
