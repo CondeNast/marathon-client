@@ -103,8 +103,8 @@ class AppSpec extends Specification {
 
     expect:
     // env
-    app.getEnv().get("XPS1") == new EnvString("Test")
-    app.getEnv().get("PASSWORD") == new EnvSecret("/db/password")
+    app.getEnv().get("XPS1") == new EnvValue("Test", false)
+    app.getEnv().get("PASSWORD") == new EnvValue("/db/password", true)
 
     // port definitions
     portDefs.size() == 2
