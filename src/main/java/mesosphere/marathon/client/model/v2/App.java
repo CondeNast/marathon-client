@@ -1,6 +1,11 @@
 package mesosphere.marathon.client.model.v2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 import mesosphere.client.common.ModelUtils;
 
@@ -39,7 +44,7 @@ public class App {
 	private List<List<String>> constraints;
 	private Collection<String> acceptedResourceRoles;
 	private Container container;
-	private Map<String, Object> env;
+	private Map<String, EnvValue> env;
 	private Map<String, String> labels;
 	private IpAddress ipAddress;
 	private Residency residency;
@@ -193,11 +198,11 @@ public class App {
 		this.container = container;
 	}
 
-	public Map<String, Object> getEnv() {
+	public Map<String, EnvValue> getEnv() {
 		return env;
 	}
 
-	public void setEnv(Map<String, Object> env) {
+	public void setEnv(Map<String, EnvValue> env) {
 		this.env = env;
 	}
 

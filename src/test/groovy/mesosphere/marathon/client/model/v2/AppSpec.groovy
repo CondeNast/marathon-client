@@ -93,59 +93,59 @@ class AppSpec extends Specification {
   }
 
   def "test example JSON"() {
-	given:
-	def json = exampleJSON()
+    given:
+    def json = exampleJSON()
 
-	def app = ModelUtils.GSON.fromJson(json, App.class)
-	def portDefs = app.getPortDefinitions()
-	def fetch2 = app.fetch[1]
-	def discovery = app.ipAddress.discovery
+    def app = ModelUtils.GSON.fromJson(json, App.class)
+    def portDefs = app.getPortDefinitions()
+    def fetch2 = app.fetch[1]
+    def discovery = app.ipAddress.discovery
 
-	expect:
-	// env
-	app.getEnv().get("PASSWORD") == ["secret": "/db/password"]
+    expect:
+    // env
+    app.getEnv().get("PASSWORD") == new EnvValue("/db/password", true)
 
-	// port definitions
-	portDefs.size() == 2
-	portDefs[0].port == 0
-	portDefs[0].protocol == "tcp"
-	portDefs[0].name == "http"
-	portDefs[0].labels == ["vip": "192.168.0.1:80"]
-	portDefs[1].port == 31009
-	portDefs[1].protocol == "tcp"
-	portDefs[1].labels == ["VIP_0": "3.3.3.3"]
+    // port definitions
+    portDefs.size() == 2
+    portDefs[0].port == 0
+    portDefs[0].protocol == "tcp"
+    portDefs[0].name == "http"
+    portDefs[0].labels == ["vip": "192.168.0.1:80"]
+    portDefs[1].port == 31009
+    portDefs[1].protocol == "tcp"
+    portDefs[1].labels == ["VIP_0": "3.3.3.3"]
 
-	// fetch
-	app.fetch.size() == 2
-	fetch2.uri == "https://foo.com/archive.zip"
-	!fetch2.executable
-	fetch2.extract
-	fetch2.cache
-	fetch2.outputFile == "newname.zip"
+    // fetch
+    app.fetch.size() == 2
+    fetch2.uri == "https://foo.com/archive.zip"
+    !fetch2.executable
+    fetch2.extract
+    fetch2.cache
+    fetch2.outputFile == "newname.zip"
 
-	//secrets
-	app.secrets.size() == 2
-	app.secrets.secret3.source == "/foo2"
+    //secrets
+    app.secrets.size() == 2
+    app.secrets.secret3.source == "/foo2"
 
-	// ipaddress
-	discovery.ports.size() == 1
-	discovery.ports[0].number == 8080
-	discovery.ports[0].name == "rest-endpoint"
-	app.ipAddress.labels["environment"] == "dev"
-	app.ipAddress.groups[0] == "dev"
+    // ipaddress
+    discovery.ports.size() == 1
+    discovery.ports[0].number == 8080
+    discovery.ports[0].name == "rest-endpoint"
+    app.ipAddress.labels["environment"] == "dev"
+    app.ipAddress.groups[0] == "dev"
 
-	// residency
-	app.residency.relaunchEscalationTimeoutSeconds == 60
-	app.residency.taskLostBehavior == "WAIT_FOREVER"
+    // residency
+    app.residency.relaunchEscalationTimeoutSeconds == 60
+    app.residency.taskLostBehavior == "WAIT_FOREVER"
 
-	// container.docker.portMappings
-	app.container.docker.portMappings[0].name == "http"
-	app.container.docker.portMappings[0].protocol == "tcp"
-	app.container.docker.portMappings[0].containerPort == 80
-	app.container.docker.portMappings[0].servicePort == 10019
+    // container.docker.portMappings
+    app.container.docker.portMappings[0].name == "http"
+    app.container.docker.portMappings[0].protocol == "tcp"
+    app.container.docker.portMappings[0].containerPort == 80
+    app.container.docker.portMappings[0].servicePort == 10019
 
-	// container.docker.network
-	app.container.docker.network == "BRIDGE"
+    // container.docker.network
+    app.container.docker.network == "BRIDGE"
 
   }
 
@@ -169,8 +169,8 @@ class AppSpec extends Specification {
   }
 
 
-  def exampleJSON() {
-	return """
+def exampleJSON() {
+return """
 {
   "id": "/foo",
   "instances": 2,
