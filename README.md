@@ -12,7 +12,7 @@ For Marathon v1.x:
 <dependency>
   <groupId>com.mesosphere</groupId>
   <artifactId>marathon-client</artifactId>
-  <version>0.3.0</version>
+  <version>0.6.0</version>
 </dependency>
 ```
 
@@ -82,6 +82,12 @@ Run the following command from the root of repository, to build the client JAR:
 ```
 $ mvn clean install
 ```
+
+## Debugging / Logging
+
+Feign is used as the underlying REST library.  Sometimes it is useful to see the low level JSON and responses.   It is possible to setup debug without directed to stdout or to a log file.
+This is simplified by set the environment variable `DEBUG_JSON_OUTPUT` to either a file name `debug.log` or to `System.out`.
+
 
 ## Bugs
 

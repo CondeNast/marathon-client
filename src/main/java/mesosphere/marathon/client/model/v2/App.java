@@ -69,6 +69,8 @@ public class App {
 	private List<HealthCheck> healthChecks;
 	private List<ReadinessCheck> readinessChecks;
 	private UpgradeStrategy upgradeStrategy;
+	private UnreachableStrategy unreachableStrategy;
+	private List<Network> networks;
 
 	private List<Deployment> deployments;
 	private TaskFailure lastTaskFailure;
@@ -424,6 +426,18 @@ public class App {
 		return upgradeStrategy;
 	}
 
+	public UnreachableStrategy getUnreachableStrategy() {
+		return unreachableStrategy;
+	}
+
+	public List<Network> getNetworks() {
+		return networks;
+	}
+
+	public void setNetworks(List<Network> networks) {
+		this.networks = networks;
+	}
+
 	public List<Deployment> getDeployments() {
 		return deployments;
 	}
@@ -434,6 +448,10 @@ public class App {
 
 	public void setUpgradeStrategy(final UpgradeStrategy upgradeStrategy) {
 		this.upgradeStrategy = upgradeStrategy;
+	}
+
+	public void setUnreachableStrategy(final UnreachableStrategy unreachableStrategy) {
+		this.unreachableStrategy = unreachableStrategy;
 	}
 
 	public TaskFailure getLastTaskFailure() {
